@@ -1,0 +1,112 @@
+body {
+	background-color: #F5F5F5;
+	font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+	font-size: 1.2em;
+}
+
+h2 {
+	font-size: 1.2em;
+	font-weight: 300;
+}
+
+p {
+	font-weight: 100;
+}
+
+.card {
+	width: 370px;
+	background-color: #FFFFFF;
+	padding: 0;
+	border:none;
+	border-radius: 3px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  	overflow: hidden;
+  	margin: 8px;
+}
+
+.card:hover {
+	box-shadow: 0 4px 12px rgba(0,0,0,0.25), 0 4px 8px rgba(0,0,0,0.24);
+}
+
+
+.card a {
+	color: #212121;
+}
+
+.cards {
+	margin: 8px 0px 8px 0px;
+}
+
+.chatBubble {
+	background-color: #EEEEEE;
+	border-radius: 16px;
+	padding: 0.5rem;
+	max-width: 500px;
+	margin-top: 8px;
+	float: left;
+  	clear: left;
+}
+
+.chatBubble1 {
+	width: 105px;
+}
+
+.chatBubbles {
+	list-style-type: none;
+	margin: 0;
+	padding-left: 8px;
+	display: inline-block;
+}
+
+.chatContainer {
+}
+
+.chatReply {
+	background-color: #007bff;
+	color: #FFFFFF;
+	margin-top: 16px;
+}
+
+.container {
+	position: absolute;
+	max-width: 1000px;
+}
+
+.pageImg {
+	max-height: 150px;
+	overflow: hidden;
+}
+
+.pageImg img {
+	width: 100%;
+}
+
+.pageInfo {
+	padding: 16px 16px 0px 16px;
+}
+
+.replyButtons {
+	margin: 16px 0px 8px 0px;
+
+}
+
+.thumbnail {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    border: solid 1px #E0E0E0;
+    flex-shrink: 0;
+}
+
+.thumbnail img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+}

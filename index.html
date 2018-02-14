@@ -3,12 +3,12 @@
 
 	<head>
 
-    <title>Yipp Home</title>
+    <title>Juan Ordonez</title>
 
 	    <!-- Bootstrap CSS -->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	    <!-- Fonts -->
-	    <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
+	    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto:light|Roboto:thin" rel="stylesheet">
 	    <!-- Waves CSS -->
 	    <link href="css/waves.min.css" rel="stylesheet">
 	    <!-- animate CSS -->
@@ -17,13 +17,44 @@
 	    <link href="css/style.css" rel="stylesheet">
 	   	<!-- Font Awesome -->
 	    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+	    <!--React-->
+	    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+		<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+		<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 
 
  	</head>
 
 	<body>
-		<h1>Hello World</h1>
-		<p>I'm hosted with GitHub Pages.</p>
+
+		<div class="container d-flex flex-column justify-content-center" id="scroll">
+
+			<div class="chatContainer d-flex flex-row justify-content-start align-items-end">
+				<div class="thumbnail">
+					<img src="https://i.imgur.com/82uekFX.jpg">
+				</div>
+				<ul class="chatBubbles">
+					<li class="chatBubble">Hi there!</li>
+					<li class="chatBubble">I'm Juan, a <strong>developer</strong> and <strong>designer</strong> with a <strong>Product Design</strong> masters from the University of California at Berkeley.</li>
+					<li class="chatBubble">I can tell you more about my experience and projects.</li>
+					<li class="chatBubble">Whatchu wanna hear about?</li>
+				</ul>
+			</div>
+
+			<div id="userReplies" style="display:none;"></div>
+			<div id="botReplies" style="display:none;"></div>
+
+			<div id="products" style="display:none;"></div>
+			<div id="projects" style="display:none;"></div>
+			<div id="aboutMe" style="display:none;"></div>
+
+			<div class="replyButtons align-self-end" style="display:inline-block;">
+				<button id="btnProducts" type="button" class="btn btn-outline-primary">Products</button>
+				<button id="btnProjects" type="button" class="btn btn-outline-primary ml-2">Projects</button>
+				<button id="btnAboutMe" type="button" class="btn btn-outline-primary ml-2">About me</button>
+			</div>
+
+		</div>
 
 	    <!-- jQuery, Popper.js, Bootstrap JS, Waves.js -->
 	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -31,7 +62,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	    <script type="text/javascript" src="js/waves.min.js"></script>
 	    <!--Custom scripts-->
-	    <script type="text/javascript" src="scripts.js"></script>
+	    <script type="text/babel" src="js/scripts.js"></script>
 	</body>
 
 </html>

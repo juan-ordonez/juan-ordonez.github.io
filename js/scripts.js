@@ -10,7 +10,7 @@ const products = [{ "title": "Yipp: The Social Bookmarking App",
 
 const projects = [{ "title": "Berkeley Hyperloop", 
 					"description" : "Led team of 60+ undergraduate engineers to build a functional Hyperloop pod and compete in the SpaceX Hyperloop Competition against the world’s top 27 pods", 
-					"banner" : "https://i.imgur.com/SlVDztE.jpg",
+					"banner" : "https://i.imgur.com/k3MTcR5.jpg",
 					"url" : "http://www.berkeley-hyperloop.com/" },
 					{ "title": "Drinks4Snaps", 
 					"description" : "Implemented a rewards system for promoting local restaurants through personal Snapchat accounts, increasing weekend revenue by $1,000", 
@@ -22,7 +22,7 @@ const projects = [{ "title": "Berkeley Hyperloop",
 					"url" : "javascript:;" },
 					{ "title": "Nourish Technology", 
 					"description" : "Designed and prototyped solutions to automatically package food using intelligent robotic systems", 
-					"banner" : "https://i.imgur.com/hYUvHfh.jpg",
+					"banner" : "https://i.imgur.com/QHc6two.jpg",
 					"url" : "https://www.youtube.com/watch?v=ttMuK_rMTpk"}];
 
 

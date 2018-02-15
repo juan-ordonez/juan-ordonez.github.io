@@ -3,21 +3,19 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
-h1 {
-	font-size: 1.2em;
-}
-
-h2 {
-	font-size: 1.2em;
-	font-weight: 300;
-}
+h1 {font-size: 2em;}
 
 p {
 	font-weight: 100;
+	font-size: 1.5em;
+}
+
+button {
+	font-size: 1.5em !important;
 }
 
 .card {
-	width: 370px;
+	width: 100%;
 	background-color: #FFFFFF;
 	padding: 0;
 	border:none;
@@ -49,10 +47,7 @@ p {
 	margin-top: 8px;
 	float: left;
   	clear: left;
-}
-
-.chatBubble1 {
-	width: 105px;
+  	font-size: 1.5em;
 }
 
 .chatBubbles {
@@ -62,31 +57,35 @@ p {
 	display: inline-block;
 }
 
-.chatContainer {
-}
-
 .chatReply {
 	background-color: #007bff;
 	color: #FFFFFF;
 	margin-top: 16px;
+	margin-bottom: 8px;
 }
 
 .container {
-	max-width: 600px;
+	max-width: 1000px;
 	margin-bottom: 50px;
 	margin-top: 50px;
 }
-@media only screen and (min-width: 1200px) {
-	.container {max-width: 1000px;}
-}
 
 .pageImg {
-	max-height: 150px;
-	overflow: hidden;
-}
+		position:relative;
+		overflow:hidden;
+		width:100%;
+		height: 300px;
+	}
 
 .pageImg img {
+	position:absolute;
+	left: 50%;
+	top: 50%;
 	width: 100%;
+	height: auto;
+	-webkit-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
 }
 
 .pageInfo {
@@ -95,12 +94,11 @@ p {
 
 .replyButtons {
 	margin: 16px 0px 8px 0px;
-
 }
 
 .thumbnail {
-    width: 40px;
-    height: 40px;
+    width: 52px;
+    height: 52px;
     position: relative;
     overflow: hidden;
     border-radius: 50%;
@@ -114,3 +112,15 @@ p {
     height: 100%;
     width: auto;
 }
+
+@media only screen and (min-width: 768px) {
+	h1 {font-size: 1.4em;}
+	p {font-weight: 100; font-size: 1.2em;}
+	.card {width: 400px;}
+	.chatBubble, button {font-size: 1.2em!important;};
+	.pageImg {max-height: 200px;}
+	.thumbnail {width: 44px; height: 44px;}
+	.pageImg {width:400px;height: 200px;}
+
+}
+

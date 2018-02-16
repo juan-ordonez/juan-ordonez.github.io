@@ -1,3 +1,6 @@
+//PORTFOLIO INFO START
+
+//Insert products info here
 const products = [{ "title": "Yipp: The Social Bookmarking App", 
 					"description" : "Yipp let's you create and curate colletions of web pages with others", 
 					"banner" : "https://i.imgur.com/3ZmAQu3.png",
@@ -7,7 +10,7 @@ const products = [{ "title": "Yipp: The Social Bookmarking App",
 					"banner" : "https://i.imgur.com/gLwoSRW.png", 
 					"url" : "https://www.youtube.com/watch?v=EeCHOdUHZEk"}];
 
-
+//Insert projects info here
 const projects = [{ "title": "Berkeley Hyperloop", 
 					"description" : "Led team of 60+ undergraduate engineers to build a functional Hyperloop pod and compete in the SpaceX Hyperloop Competition against the world’s top 27 pods", 
 					"banner" : "https://i.imgur.com/k3MTcR5.jpg",
@@ -25,7 +28,12 @@ const projects = [{ "title": "Berkeley Hyperloop",
 					"banner" : "https://i.imgur.com/QHc6two.jpg",
 					"url" : "https://www.youtube.com/watch?v=ttMuK_rMTpk"}];
 
+//PORTFOLIO INFO END
 
+
+//REACT COMPONENTS START
+
+//Class for individual products/projects card
 class Card extends React.Component {
   render() {
   	return (
@@ -44,6 +52,7 @@ class Card extends React.Component {
   }
 }
 
+//Class for groups of cards
 class Cards extends React.Component {
 	render() {
 		var cards = [];
@@ -58,25 +67,27 @@ class Cards extends React.Component {
 		}
 
 		return (
-			<div className="cards d-flex flex-row justify-content-center flex-wrap">{cards}</div>
+			<div className="cards animated slideInUp d-flex flex-row justify-content-center flex-wrap" id={"cards-"+this.props.type}>{cards}</div>
 		);
 	}
 }
 
+//Class for messages made by the bot
 class MessageBot extends React.Component {
 	render() {
 		
 		var props = this.props.message;
+		var ids = this.props.id;
 		var messages = [];
 
 		for (var i = 0; i < props.length; i++ ) {
-			messages.push(<li key={i} className="chatBubble">{props[i]}</li>);
+			messages.push(<li key={i} className="chatBubble" id={ids[i]}>{props[i]}</li>);
 		}
 
 		return (
 
-			<div className="chatContainer d-flex flex-row justify-content-start align-items-end">
-				<div className="thumbnail">
+			<div className="chatContainer animated slideInUp d-flex flex-row justify-content-start align-items-end">
+				<div className="thumbnail" id={"pic-"+ids[0]}>
 					<img src="https://i.imgur.com/82uekFX.jpg"></img>
 				</div>
 				<ul className="chatBubbles">
@@ -88,68 +99,188 @@ class MessageBot extends React.Component {
 	}
 }
 
+//Class for messages made by user
 class MessageUser extends React.Component {
 	render() {
 		return (
-			<div className="chatBubble chatReply chatContainer align-self-end">{this.props.message}</div>
+			<div className="chatBubble chatReply animated slideInUp chatContainer align-self-end" id={this.props.id}>{this.props.message}</div>
 		);
 	}
 }
 
+//REACT COMPONENTS END
+
+//REACT RENDERING + ANIMATIONS START
+
+const totalMessages = 14; //Number of total messages goes here
+var messagesRemaining = 9; //Number of messages remaining after intro
+
 $(document).on("click", "#btnProducts", function(){
-	ReactDOM.render(<MessageUser message="Show me the products you've built!"/>, document.getElementById('userReplies'));
+	
+	//Render user reply
+	var idProd1 = (totalMessages - messagesRemaining).toString();
+	ReactDOM.render(<MessageUser message="Show me the products you've built!" id={"chat-"+idProd1}/>, document.getElementById('userReplies'));
+	messagesRemaining -= 1;
 	$(".replyButtons").before($("#userReplies").html());
+
+	//Render bot reply
 	var botReply = ["Here ya go :)"];
-	ReactDOM.render(<MessageBot message={botReply}/>, document.getElementById('botReplies'));
+	var idProd2 = (totalMessages - messagesRemaining).toString();
+	ReactDOM.render(<MessageBot message={botReply} id={["chat-"+idProd2]} />, document.getElementById('botReplies'));
+	messagesRemaining -= 1;
 	$(".replyButtons").before($("#botReplies").html());
+
+	//Render products cards
 	ReactDOM.render(<Cards type="products" />, document.getElementById('products'));
 	$(".replyButtons").before($("#products").html());
-	$("#btnProducts").remove();
+	$("#btnProducts").remove();	
+
+	//Render bot follow-up if this is not the last prompt
 	if ($(".replyButtons").children().length > 0) {
 		var botFollowUp = ["Anything else?"];
-		ReactDOM.render(<MessageBot message={botFollowUp}/>, document.getElementById('botReplies'));
+		var idProd3 = (totalMessages - messagesRemaining).toString();
+		ReactDOM.render(<MessageBot message={botFollowUp} id={["chat-"+idProd3]} />, document.getElementById('botReplies'));
+		messagesRemaining -= 1;
 		$(".replyButtons").before($("#botReplies").html());
 	}
-	setTimeout(function(){ updateScroll(); }, 100);
+
+	//Reveal and animate rendered components
+	$(".container").addClass("fixed-bottom");
+	$("#chat-"+idProd1).slideToggle();
+	setTimeout(function(){ $("#chat-"+idProd2).slideToggle(); }, 1000);
+	setTimeout(function(){ $("#pic-chat-"+idProd2).slideToggle(); }, 1000);
+	setTimeout(function(){ $("#cards-products .card").slideToggle(); }, 2000);
+	setTimeout(function(){ $("#chat-"+idProd3).slideToggle(); }, 3000);
+	setTimeout(function(){ $(".container .thumbnail").last().slideToggle(); }, 3000);
+	setTimeout(function(){ updateScroll(); }, 3400);
 
 });
 
 $(document).on("click", "#btnProjects", function(){
-	ReactDOM.render(<MessageUser message="Tell me about your projects"/>, document.getElementById('userReplies'));
+	
+	//Render user reply
+	var idProj1 = (totalMessages - messagesRemaining).toString();
+	ReactDOM.render(<MessageUser message="Tell me about your projects" id={"chat-"+idProj1} />, document.getElementById('userReplies'));
+	messagesRemaining -= 1;
 	$(".replyButtons").before($("#userReplies").html());
+
+	//Render bot reply
 	var botReply = ["Sure thing"];
-	ReactDOM.render(<MessageBot message={botReply}/>, document.getElementById('botReplies'));
+	var idProj2 = (totalMessages - messagesRemaining).toString();
+	ReactDOM.render(<MessageBot message={botReply} id={["chat-"+idProj2]} />, document.getElementById('botReplies'));
+	messagesRemaining -= 1;
 	$(".replyButtons").before($("#botReplies").html());
+
+	//Render projects cards
 	ReactDOM.render(<Cards type="projects" />, document.getElementById('projects'));
 	$(".replyButtons").before($("#projects").html());
 	$("#btnProjects").remove();
+
+	//Render bot follow-up if this is not the last prompt
 	if ($(".replyButtons").children().length > 0) {
-		var botFollowUp = ["What else?"]
-		ReactDOM.render(<MessageBot message={botFollowUp}/>, document.getElementById('botReplies'));
+		var botFollowUp = ["What else?"];
+		var idProj3 = (totalMessages - messagesRemaining).toString();
+		ReactDOM.render(<MessageBot message={botFollowUp} id={["chat-"+idProj3]} />, document.getElementById('botReplies'));
+		messagesRemaining -= 1;
 		$(".replyButtons").before($("#botReplies").html());
 	}
-	setTimeout(function(){ updateScroll(); }, 100);
+
+	//Reveal and animate rendered components
+	$(".container").addClass("fixed-bottom");
+	$("#chat-"+idProj1).slideToggle();
+	setTimeout(function(){ $("#chat-"+idProj2).slideToggle(); }, 1000);
+	setTimeout(function(){ $("#pic-chat-"+idProj2).slideToggle(); }, 1000);
+	setTimeout(function(){ $("#cards-projects .card").slideToggle(); }, 2000);
+	setTimeout(function(){ $("#chat-"+idProj3).slideToggle(); }, 3000);
+	setTimeout(function(){ $(".container .thumbnail").last().slideToggle(); }, 3000);
+	setTimeout(function(){ updateScroll(); }, 3400);
+
+	// setTimeout(function(){ updateScroll(); }, 100);
 });
 
 $(document).on("click", "#btnAboutMe", function(){
 	
+	//Render user reply
+	var idAbout1 = (totalMessages - messagesRemaining).toString();
+	ReactDOM.render(<MessageUser message="Tell me more about yourself :)" id={"chat-"+idAbout1} />, document.getElementById('userReplies'));
+	messagesRemaining -= 1;
+	$(".replyButtons").before($("#userReplies").html());
+
+	//Set messages for 'about me' reply
 	var aboutMe1 = "Does this mean we're friends?";
+	var id1 = "chat-"+(totalMessages - messagesRemaining).toString();
 	var aboutMe2 = "I'm from Colombia and I have lived in six countries so far! Right now I am based in the Bay Area and I'm loving it :)";
+	var id2 = "chat-"+(totalMessages - messagesRemaining + 1).toString();
 	var aboutMe3 = "Btw, I'm currently looking for a position in Product Management. Hit me up if you've got any leads!";
-	var botFollowUp = "Anyways, wanna see my work?"
+	var id3 = "chat-"+(totalMessages - messagesRemaining + 2).toString();
+	var botFollowUp = "Anyways, wanna see my work?";
+	var id4 = "chat-"+(totalMessages - messagesRemaining + 3).toString();
 	$("#btnAboutMe").remove();
+
+	//Only include bot follow up if this is not the final prompt
 	if ($(".replyButtons").children().length > 0) {
 		var messages = [aboutMe1, aboutMe2, aboutMe3, botFollowUp];
+		var ids = [id1, id2, id3, id4];
 	} else {
 		var messages = [aboutMe1, aboutMe2, aboutMe3];
+		var ids = [id1, id2, id3];
 	}
-	ReactDOM.render(<MessageUser message="Tell me more about yourself :)"/>, document.getElementById('userReplies'));
-	$(".replyButtons").before($("#userReplies").html());
-	ReactDOM.render(<MessageBot message={messages}/>, document.getElementById('aboutMe'));
+
+	//Render 'about me' replies
+	ReactDOM.render(<MessageBot message={messages} id={ids} />, document.getElementById('aboutMe'));
+	messagesRemaining = messagesRemaining - ids.length;
 	$(".replyButtons").before($("#aboutMe").html());
-	setTimeout(function(){ updateScroll(); }, 100);
+	
+	//Animate rendered components
+	$(".container").addClass("fixed-bottom");
+	$("#chat-"+idAbout1).slideToggle();
+	setTimeout(function(){ $("#"+id1).slideToggle(); }, 1000);
+	setTimeout(function(){ $(".container .thumbnail").last().slideToggle(); }, 1000);
+	setTimeout(function(){ $("#"+id2).slideToggle(); }, 2000);
+	setTimeout(function(){ $("#"+id3).slideToggle(); }, 3000);
+	setTimeout(function(){ $("#"+id4).slideToggle(); }, 4000);
+	setTimeout(function(){ updateScroll(); }, 4400);
+
 });
 
+//REACT RENDERING + ANIMATIONS SEND
+
+//INTRO ANIMATION START
+
+//function to detect when animations end
+var animationEnd = (function(el) {
+  var animations = {
+    animation: 'animationend',
+    OAnimation: 'oAnimationEnd',
+    MozAnimation: 'mozAnimationEnd',
+    WebkitAnimation: 'webkitAnimationEnd',
+  };
+
+  for (var t in animations) {
+    if (el.style[t] !== undefined) {
+      return animations[t];
+    }
+  }
+})(document.createElement('div'));
+
+$('#chat-1').one(animationEnd, function(){
+	setTimeout(function(){$("#chat-2").slideToggle()}, 100);
+	$('#chat-2').one(animationEnd, function(){
+		setTimeout(function(){$("#chat-3").slideToggle()}, 100);
+		$('#chat-3').one(animationEnd, function(){
+			setTimeout(function(){$("#chat-4").slideToggle()}, 100);
+			$('#chat-4').one(animationEnd, function(){
+				$(".replyButtons").css("visibility", "visible");
+			});
+		});
+	});
+});
+
+//INTRO ANIMATION END
+
+//FUNCTIONS
+
+//scroll to bottom of page
 function updateScroll() {
 	if ($(".container").height() > $(window).height()) {
 		$(".container").removeClass("fixed-bottom");

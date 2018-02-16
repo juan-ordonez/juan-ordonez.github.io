@@ -12,7 +12,7 @@ h1 {
 p {
 	font-weight: 100;
 	font-size: 1.2;
-	color: #616161;
+	color: #424242;
 }
 
 button {
@@ -21,6 +21,10 @@ button {
 
 strong {
 	font-weight: 500;
+}
+
+#products2 {
+
 }
 
 .card {
@@ -33,6 +37,7 @@ strong {
   	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   	overflow: hidden;
   	margin: 8px;
+  	display:none;
 }
 
 .card:hover {
@@ -59,7 +64,7 @@ strong {
   	font-size: 1.2em;
   	font-weight: 400;
   	color: #424242;
-
+  	display:none;
 }
 
 .chatBubbles {
@@ -69,17 +74,20 @@ strong {
 	display: inline-block;
 }
 
+.chatIntro {
+	display:none;
+}
+
 .chatReply {
 	background-color: #007bff;
 	color: #FFFFFF;
 	margin-top: 16px;
 	margin-bottom: 8px;
+	/*display:initial;*/
 }
 
 .container {
 	max-width: 1000px;
-	margin-bottom: 50px;
-	margin-top: 50px;
 }
 
 .pageImg {
@@ -106,6 +114,7 @@ strong {
 
 .replyButtons {
 	margin: 16px 0px 8px 0px;
+	visibility: hidden;
 }
 
 .thumbnail {
@@ -116,6 +125,7 @@ strong {
     border-radius: 50%;
     border: solid 1px #E0E0E0;
     flex-shrink: 0;
+    display:none;
 }
 
 .thumbnail img {
@@ -129,9 +139,13 @@ strong {
 	h1 {font-size: 1.4em;}
 	p {font-weight: 100; font-size: 1.2em;}
 	button {font-size: 1.2em!important}
+	.container {margin-bottom: 50px;margin-top: 50px;}
 	.card {width: 400px;}
 	.chatBubble {; max-width: 500px;};
 	.thumbnail {width: 44px; height: 44px;}
 	.pageImg {width:400px;}
 }
+
+/*Animations*/
+/*.chatBubble {-webkit-animation-delay: 2s;}*/
 

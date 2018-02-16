@@ -23,8 +23,36 @@ strong {
 	font-weight: 500;
 }
 
+#footer {
+	text-align: center;
+	color: #BDBDBD;
+	padding:16px;
+}
+
+#footer a, #header a {
+	color: #BDBDBD;
+}
+
+#footer a:hover, #header a:hover {
+	color: #424242;
+	text-decoration: none;
+}
+
+#header {
+	text-align: center;
+	width: 100%;
+	padding:16px;
+}
+
 #products2 {
 
+}
+
+#skipIntro {
+	display: block;
+	padding: 16px;
+	margin:auto !important;
+	width: 30%;
 }
 
 .card {

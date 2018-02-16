@@ -1,3 +1,7 @@
+//Attach wave effect to buttons and other elements
+Waves.attach(".btn");
+Waves.init();
+
 //PORTFOLIO INFO START
 
 //Insert products info here
@@ -38,7 +42,7 @@ class Card extends React.Component {
   render() {
   	return (
 
-  		<div className="card">
+  		<div className="card animated bounceIn">
 		    <div className="pageImg d-flex align-items-center">
 		      <a href={this.props.url} target="_blank"><img src={this.props.banner}></img></a>
 		    </div>
@@ -67,7 +71,7 @@ class Cards extends React.Component {
 		}
 
 		return (
-			<div className="cards animated slideInUp d-flex flex-row justify-content-center flex-wrap" id={"cards-"+this.props.type}>{cards}</div>
+			<div className="cards d-flex flex-row justify-content-center flex-wrap" id={"cards-"+this.props.type}>{cards}</div>
 		);
 	}
 }
@@ -116,6 +120,9 @@ const totalMessages = 14; //Number of total messages goes here
 var messagesRemaining = 9; //Number of messages remaining after intro
 
 $(document).on("click", "#btnProducts", function(){
+
+	$('.replyButtons button').prop('disabled', true);
+	$("#header").fadeOut();
 	
 	//Render user reply
 	var idProd1 = (totalMessages - messagesRemaining).toString();
@@ -132,11 +139,10 @@ $(document).on("click", "#btnProducts", function(){
 
 	//Render products cards
 	ReactDOM.render(<Cards type="products" />, document.getElementById('products'));
-	$(".replyButtons").before($("#products").html());
-	$("#btnProducts").remove();	
+	$(".replyButtons").before($("#products").html());	
 
 	//Render bot follow-up if this is not the last prompt
-	if ($(".replyButtons").children().length > 0) {
+	if ($(".replyButtons").children().length > 1) {
 		var botFollowUp = ["Anything else?"];
 		var idProd3 = (totalMessages - messagesRemaining).toString();
 		ReactDOM.render(<MessageBot message={botFollowUp} id={["chat-"+idProd3]} />, document.getElementById('botReplies'));
@@ -146,17 +152,24 @@ $(document).on("click", "#btnProducts", function(){
 
 	//Reveal and animate rendered components
 	$(".container").addClass("fixed-bottom");
+	$(".replyButtons").removeClass("fadeIn");
+	$(".replyButtons").addClass("fadeOut");
 	$("#chat-"+idProd1).slideToggle();
+	setTimeout(function(){ $("#btnProducts").remove();; }, 400);
 	setTimeout(function(){ $("#chat-"+idProd2).slideToggle(); }, 1000);
 	setTimeout(function(){ $("#pic-chat-"+idProd2).slideToggle(); }, 1000);
 	setTimeout(function(){ $("#cards-products .card").slideToggle(); }, 2000);
 	setTimeout(function(){ $("#chat-"+idProd3).slideToggle(); }, 3000);
-	setTimeout(function(){ $(".container .thumbnail").last().slideToggle(); }, 3000);
+	setTimeout(function(){ $("#pic-chat-"+idProd3).slideToggle(); }, 3000);
+	setTimeout(function(){ $('.replyButtons button').prop('disabled', false); $(".replyButtons").removeClass("fadeOut"); $(".replyButtons").addClass("fadeIn"); }, 3000);
 	setTimeout(function(){ updateScroll(); }, 3400);
 
 });
 
 $(document).on("click", "#btnProjects", function(){
+
+	$('.replyButtons button').prop('disabled', true);
+	$("#header").fadeOut();
 	
 	//Render user reply
 	var idProj1 = (totalMessages - messagesRemaining).toString();
@@ -174,10 +187,9 @@ $(document).on("click", "#btnProjects", function(){
 	//Render projects cards
 	ReactDOM.render(<Cards type="projects" />, document.getElementById('projects'));
 	$(".replyButtons").before($("#projects").html());
-	$("#btnProjects").remove();
 
 	//Render bot follow-up if this is not the last prompt
-	if ($(".replyButtons").children().length > 0) {
+	if ($(".replyButtons").children().length > 1) {
 		var botFollowUp = ["What else?"];
 		var idProj3 = (totalMessages - messagesRemaining).toString();
 		ReactDOM.render(<MessageBot message={botFollowUp} id={["chat-"+idProj3]} />, document.getElementById('botReplies'));
@@ -187,18 +199,25 @@ $(document).on("click", "#btnProjects", function(){
 
 	//Reveal and animate rendered components
 	$(".container").addClass("fixed-bottom");
+	$(".replyButtons").removeClass("fadeIn");
+	$(".replyButtons").addClass("fadeOut");
 	$("#chat-"+idProj1).slideToggle();
+	setTimeout(function(){ $("#btnProjects").remove(); }, 400);
 	setTimeout(function(){ $("#chat-"+idProj2).slideToggle(); }, 1000);
 	setTimeout(function(){ $("#pic-chat-"+idProj2).slideToggle(); }, 1000);
 	setTimeout(function(){ $("#cards-projects .card").slideToggle(); }, 2000);
 	setTimeout(function(){ $("#chat-"+idProj3).slideToggle(); }, 3000);
-	setTimeout(function(){ $(".container .thumbnail").last().slideToggle(); }, 3000);
+	setTimeout(function(){ $("#pic-chat-"+idProj3).slideToggle(); }, 3000);
+	setTimeout(function(){ $('.replyButtons button').prop('disabled', false); $(".replyButtons").removeClass("fadeOut"); $(".replyButtons").addClass("fadeIn"); }, 3000);
 	setTimeout(function(){ updateScroll(); }, 3400);
 
 	// setTimeout(function(){ updateScroll(); }, 100);
 });
 
 $(document).on("click", "#btnAboutMe", function(){
+
+	$('.replyButtons button').prop('disabled', true);
+	$("#header").fadeOut();
 	
 	//Render user reply
 	var idAbout1 = (totalMessages - messagesRemaining).toString();
@@ -215,10 +234,9 @@ $(document).on("click", "#btnAboutMe", function(){
 	var id3 = "chat-"+(totalMessages - messagesRemaining + 2).toString();
 	var botFollowUp = "Anyways, wanna see my work?";
 	var id4 = "chat-"+(totalMessages - messagesRemaining + 3).toString();
-	$("#btnAboutMe").remove();
 
 	//Only include bot follow up if this is not the final prompt
-	if ($(".replyButtons").children().length > 0) {
+	if ($(".replyButtons").children().length > 1) {
 		var messages = [aboutMe1, aboutMe2, aboutMe3, botFollowUp];
 		var ids = [id1, id2, id3, id4];
 	} else {
@@ -233,17 +251,21 @@ $(document).on("click", "#btnAboutMe", function(){
 	
 	//Animate rendered components
 	$(".container").addClass("fixed-bottom");
+	$(".replyButtons").removeClass("fadeIn");
+	$(".replyButtons").addClass("fadeOut");
 	$("#chat-"+idAbout1).slideToggle();
+	setTimeout(function(){ $("#btnAboutMe").remove(); }, 400);
 	setTimeout(function(){ $("#"+id1).slideToggle(); }, 1000);
 	setTimeout(function(){ $(".container .thumbnail").last().slideToggle(); }, 1000);
 	setTimeout(function(){ $("#"+id2).slideToggle(); }, 2000);
 	setTimeout(function(){ $("#"+id3).slideToggle(); }, 3000);
 	setTimeout(function(){ $("#"+id4).slideToggle(); }, 4000);
+	setTimeout(function(){ $('.replyButtons button').prop('disabled', false); $(".replyButtons").removeClass("fadeOut"); $(".replyButtons").addClass("fadeIn"); }, 4000);
 	setTimeout(function(){ updateScroll(); }, 4400);
 
 });
 
-//REACT RENDERING + ANIMATIONS SEND
+//REACT RENDERING + ANIMATIONS END
 
 //INTRO ANIMATION START
 
@@ -271,6 +293,7 @@ $('#chat-1').one(animationEnd, function(){
 			setTimeout(function(){$("#chat-4").slideToggle()}, 100);
 			$('#chat-4').one(animationEnd, function(){
 				$(".replyButtons").css("visibility", "visible");
+				$(".replyButtons").addClass("animated fadeIn");
 			});
 		});
 	});

@@ -131,7 +131,7 @@ $(document).on("click", "#btnProducts", function(){
 	$(".replyButtons").before($("#userReplies").html());
 
 	//Render bot reply
-	var botReply = ["Here ya go :)"];
+	var botReply = ["Here ya go 😎"];
 	var idProd2 = (totalMessages - messagesRemaining).toString();
 	ReactDOM.render(<MessageBot message={botReply} id={["chat-"+idProd2]} />, document.getElementById('botReplies'));
 	messagesRemaining -= 1;
@@ -190,7 +190,7 @@ $(document).on("click", "#btnProjects", function(){
 
 	//Render bot follow-up if this is not the last prompt
 	if ($(".replyButtons").children().length > 1) {
-		var botFollowUp = ["What else?"];
+		var botFollowUp = ["What else? 🤔"];
 		var idProj3 = (totalMessages - messagesRemaining).toString();
 		ReactDOM.render(<MessageBot message={botFollowUp} id={["chat-"+idProj3]} />, document.getElementById('botReplies'));
 		messagesRemaining -= 1;
@@ -221,16 +221,16 @@ $(document).on("click", "#btnAboutMe", function(){
 	
 	//Render user reply
 	var idAbout1 = (totalMessages - messagesRemaining).toString();
-	ReactDOM.render(<MessageUser message="Tell me more about yourself :)" id={"chat-"+idAbout1} />, document.getElementById('userReplies'));
+	ReactDOM.render(<MessageUser message="Tell me more about yourself 🙂" id={"chat-"+idAbout1} />, document.getElementById('userReplies'));
 	messagesRemaining -= 1;
 	$(".replyButtons").before($("#userReplies").html());
-
+	console.log("hey");
 	//Set messages for 'about me' reply
-	var aboutMe1 = "Does this mean we're friends?";
+	var aboutMe1 = "Does this mean we're friends? 😁";
 	var id1 = "chat-"+(totalMessages - messagesRemaining).toString();
-	var aboutMe2 = "I'm from Colombia and I have lived in six countries so far! Right now I am based in the Bay Area and I'm loving it :)";
+	var aboutMe2 = "I'm from Colombia and I have lived in six countries so far! Right now I am based in the Bay Area and I'm loving it";
 	var id2 = "chat-"+(totalMessages - messagesRemaining + 1).toString();
-	var aboutMe3 = "Btw, I'm currently looking for a position in Product Management. Hit me up if you've got any leads!";
+	var aboutMe3 = "Btw, I'm currently looking for a position in Product Management. Hit me up if you've got any leads! 👍";
 	var id3 = "chat-"+(totalMessages - messagesRemaining + 2).toString();
 	var botFollowUp = "Anyways, wanna see my work?";
 	var id4 = "chat-"+(totalMessages - messagesRemaining + 3).toString();

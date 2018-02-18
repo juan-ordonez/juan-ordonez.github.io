@@ -141,7 +141,8 @@ strong {
 }
 
 .replyButtons {
-	margin: 16px 0px 8px 0px;
+	margin: 16px 0px 16px 0px;
+	height: 42px;
 	visibility: hidden;
 }
 

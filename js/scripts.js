@@ -119,6 +119,9 @@ class MessageUser extends React.Component {
 const totalMessages = 14; //Number of total messages goes here
 var messagesRemaining = 9; //Number of messages remaining after intro
 
+const outroMessage = "Thanks for hanging out! If you wanna chat some more, feel free to shoot me an email at jdordonez@berkeley.edu 🙃";
+const outroID = "outro";
+
 $(document).on("click", "#btnProducts", function(){
 
 	$('.replyButtons button').prop('disabled', true);
@@ -145,10 +148,14 @@ $(document).on("click", "#btnProducts", function(){
 	if ($(".replyButtons").children().length > 1) {
 		var botFollowUp = ["Anything else?"];
 		var idProd3 = (totalMessages - messagesRemaining).toString();
-		ReactDOM.render(<MessageBot message={botFollowUp} id={["chat-"+idProd3]} />, document.getElementById('botReplies'));
-		messagesRemaining -= 1;
-		$(".replyButtons").before($("#botReplies").html());
+	} else {
+		var botFollowUp = [outroMessage];
+		var idProd3 = outroID;
 	}
+
+	ReactDOM.render(<MessageBot message={botFollowUp} id={["chat-"+idProd3]} />, document.getElementById('botReplies'));
+	messagesRemaining -= 1;
+	$(".replyButtons").before($("#botReplies").html());
 
 	//Reveal and animate rendered components
 	$(".container").addClass("fixed-bottom");
@@ -192,10 +199,14 @@ $(document).on("click", "#btnProjects", function(){
 	if ($(".replyButtons").children().length > 1) {
 		var botFollowUp = ["What else? 🤔"];
 		var idProj3 = (totalMessages - messagesRemaining).toString();
-		ReactDOM.render(<MessageBot message={botFollowUp} id={["chat-"+idProj3]} />, document.getElementById('botReplies'));
-		messagesRemaining -= 1;
-		$(".replyButtons").before($("#botReplies").html());
+	} else {
+		var botFollowUp = [outroMessage];
+		var idProj3 = outroID;
 	}
+	ReactDOM.render(<MessageBot message={botFollowUp} id={["chat-"+idProj3]} />, document.getElementById('botReplies'));
+	messagesRemaining -= 1;
+	$(".replyButtons").before($("#botReplies").html());
+
 
 	//Reveal and animate rendered components
 	$(".container").addClass("fixed-bottom");
@@ -211,7 +222,6 @@ $(document).on("click", "#btnProjects", function(){
 	setTimeout(function(){ $('.replyButtons button').prop('disabled', false); $(".replyButtons").removeClass("fadeOut"); $(".replyButtons").addClass("fadeIn"); }, 3000);
 	setTimeout(function(){ updateScroll(); }, 3400);
 
-	// setTimeout(function(){ updateScroll(); }, 100);
 });
 
 $(document).on("click", "#btnAboutMe", function(){
@@ -224,15 +234,15 @@ $(document).on("click", "#btnAboutMe", function(){
 	ReactDOM.render(<MessageUser message="Tell me more about yourself 🙂" id={"chat-"+idAbout1} />, document.getElementById('userReplies'));
 	messagesRemaining -= 1;
 	$(".replyButtons").before($("#userReplies").html());
-	console.log("hey");
 	//Set messages for 'about me' reply
 	var aboutMe1 = "Does this mean we're friends? 😁";
 	var id1 = "chat-"+(totalMessages - messagesRemaining).toString();
 	var aboutMe2 = "I'm from Colombia and I have lived in six countries so far! Right now I am based in the Bay Area and I'm loving it";
 	var id2 = "chat-"+(totalMessages - messagesRemaining + 1).toString();
-	var aboutMe3 = "Btw, I'm currently looking for a position in Product Management. Hit me up if you've got any leads! 👍";
+	var aboutMe3 = "Btw, I'm currently looking for a position in Product Management. If you've got any leads, please hit me up at jdordonez@berkeley.edu! 👍";
 	var id3 = "chat-"+(totalMessages - messagesRemaining + 2).toString();
 	var botFollowUp = "Anyways, wanna see my work?";
+	var botGoodbye = "Thanks for hanging out! 👋"
 	var id4 = "chat-"+(totalMessages - messagesRemaining + 3).toString();
 
 	//Only include bot follow up if this is not the final prompt
@@ -240,8 +250,8 @@ $(document).on("click", "#btnAboutMe", function(){
 		var messages = [aboutMe1, aboutMe2, aboutMe3, botFollowUp];
 		var ids = [id1, id2, id3, id4];
 	} else {
-		var messages = [aboutMe1, aboutMe2, aboutMe3];
-		var ids = [id1, id2, id3];
+		var messages = [aboutMe1, aboutMe2, aboutMe3, botGoodbye];
+		var ids = [id1, id2, id3, id4];
 	}
 
 	//Render 'about me' replies

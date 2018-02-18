@@ -295,6 +295,7 @@ var animationEnd = (function(el) {
   }
 })(document.createElement('div'));
 
+setTimeout(function(){$("#chat-1, #pic-intro").slideToggle()}, 200);
 $('#chat-1').one(animationEnd, function(){
 	setTimeout(function(){$("#chat-2").slideToggle()}, 100);
 	$('#chat-2').one(animationEnd, function(){

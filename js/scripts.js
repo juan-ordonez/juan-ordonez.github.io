@@ -239,7 +239,7 @@ $(document).on("click", "#btnAboutMe", function(){
 	var id1 = "chat-"+(totalMessages - messagesRemaining).toString();
 	var aboutMe2 = "I'm from Colombia and I have lived in six countries so far! Right now I am based in the Bay Area and I'm loving it";
 	var id2 = "chat-"+(totalMessages - messagesRemaining + 1).toString();
-	var aboutMe3 = "Btw, I'm currently looking for a position in Product Management. If you've got any leads, please hit me up at jdordonez@berkeley.edu! 👍";
+	var aboutMe3 = "Btw, I'm currently looking for a position in a Product team. If you've got any leads, please hit me up at jdordonez@berkeley.edu! 👍";
 	var id3 = "chat-"+(totalMessages - messagesRemaining + 2).toString();
 	var botFollowUp = "Anyways, wanna see my work?";
 	var botGoodbye = "Thanks for hanging out! 👋"

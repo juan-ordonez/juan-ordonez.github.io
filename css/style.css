@@ -116,6 +116,7 @@ strong {
 
 .container {
 	max-width: 1000px;
+	margin-top: 16px;
 }
 
 .pageImg {
@@ -168,7 +169,7 @@ strong {
 	h1 {font-size: 1.4em;}
 	p {font-weight: 100; font-size: 1.2em;}
 	button {font-size: 1.2em!important}
-	.container {margin-bottom: 50px;margin-top: 50px;}
+	.container {margin-bottom: 50px; margin-top: 50px;}
 	.card {width: 400px;}
 	.chatBubble {; max-width: 500px;};
 	.thumbnail {width: 44px; height: 44px;}

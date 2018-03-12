@@ -1,6 +1,7 @@
 body {
 	background-color: #F5F5F5;
 	font-family: 'Roboto', sans-serif;
+	color: #424242;
 }
 
 h1 {
@@ -9,8 +10,14 @@ h1 {
 	color: #424242;
 }
 
+h2 {
+	font-size: 1.3em;
+	font-weight: 400;
+	color: #424242;
+}
+
 p {
-	font-weight: 100;
+	font-weight: 300;
 	font-size: 1.2;
 	color: #424242;
 }
@@ -55,6 +62,18 @@ strong {
 	width: 30%;
 }
 
+.btn-primary {
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	-webkit-transition: 0.2s;
+    		transition: 0.2s;
+}
+
+.btn-primary:hover {
+	box-shadow: 0 4px 12px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.12);
+	-webkit-transform: scale(1.02);
+			transform: scale(1.02);
+}
+
 .card {
 	width: 100%;
 	background-color: #FFFFFF;
@@ -62,14 +81,17 @@ strong {
 	border:none;
 	border-radius: 6px;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   	overflow: hidden;
   	margin: 8px;
   	display:none;
+  	-webkit-transition: 0.2s;
+    		transition: 0.2s;
 }
 
 .card:hover {
 	box-shadow: 0 4px 12px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.12);
+	-webkit-transform: scale(1.02);
+			transform: scale(1.02);
 }
 
 
@@ -79,6 +101,53 @@ strong {
 
 .cards {
 	margin: 8px 0px 8px 0px;
+}
+
+.carousel-caption {
+	background-color: #000000;
+	color: #FFFFFF;
+	opacity: 0.6;
+	border-radius: 3px;
+}
+
+.carousel-control-prev, .carousel-control-next {
+	background-color: #007bff;
+	color: #FFFFFF;
+	opacity: 1!important;
+	width: 50px;
+	height: 50px;
+	margin: 0 16px 0 16px;
+	border-radius: 25px;
+	position: absolute;
+	bottom: -25px;
+	z-index: 1000;
+	top: auto;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	-webkit-transition: 0.2s;
+    		transition: 0.2s;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+	opacity: 1;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.12);
+	-webkit-transform: scale(1.1);
+			transform: scale(1.1);
+}
+
+.carousel-item {
+	height: 254px;
+	background-color: #FFFFFF;
+}
+
+.carousel-item img {
+	position:absolute;
+	left: 50%;
+	top: 0;
+	height: auto;
+	width: 100%;
+	-webkit-transform: translate(-50%,-0%);
+	-ms-transform: translate(-50%,-0%);
+	transform: translate(-50%,-0%);
 }
 
 .chatBubble {
@@ -114,9 +183,48 @@ strong {
 	/*display:initial;*/
 }
 
+.closeModal {
+	width: 100%;
+}
+
 .container {
 	max-width: 1000px;
 	margin-top: 16px;
+}
+
+.modal-content {
+	overflow: hidden;
+}
+
+.modal-body {
+	padding: 0;
+	text-align: center;
+}
+
+.modal-body .close {
+	position: absolute;
+	top:8px;
+	right:8px;
+	z-index: 1000;
+}
+
+.modal-body-text {
+	background-color: #F5F5F5;
+	padding: 1rem;
+}
+
+.modal-title {
+	margin-bottom: 16px;
+}
+
+.modalDescription {
+	padding: 16px;
+	margin: 0;
+}
+
+.modalDescription a {
+	font-weight: 400;
+	font-size: 0.9em;
 }
 
 .pageImg {
@@ -165,15 +273,42 @@ strong {
     width: auto;
 }
 
+.video-container {
+	position: relative;
+	width: 100%;
+	height:100%;
+	padding-bottom: 56.25%;
+	overflow: hidden;
+	padding: 30;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: auto;
+	height: 100%;
+}
+
 @media only screen and (min-width: 768px) {
 	h1 {font-size: 1.4em;}
-	p {font-weight: 100; font-size: 1.2em;}
+	p {font-weight: 300; font-size: 1.2em;}
 	button {font-size: 1.2em!important}
 	.container {margin-bottom: 50px; margin-top: 50px;}
 	.card {width: 400px;}
-	.chatBubble {; max-width: 500px;};
+	.carousel-control-prev, .carousel-control-next {margin: 0 32px 0 32px;}
+	.chatBubble {max-width: 500px;}
+	.closeModal {width: 200px;}
+	.modalDescription {padding: 32px;}
+	.modal-body-text {padding: 32px;}
 	.thumbnail {width: 44px; height: 44px;}
 	.pageImg {width:400px;}
+}
+
+@media only screen and (min-width: 992px) {
+	.carousel-item {height: 440px;}
 }
 
 /*Animations*/

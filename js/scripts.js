@@ -8,29 +8,29 @@ Waves.init();
 const products = [{ "title": "Yipp: The Social Bookmarking App", 
 					"description" : "Yipp let's you create and curate colletions of web pages with others", 
 					"banner" : "https://i.imgur.com/3ZmAQu3.png",
-					"url" : "https://www.joinyipp.com/" },
+					"url" : "yipp.html" },
 					{ "title": "LikeWallet", 
 					"description" : "LikeWallet provides ROI analytics for social media Influencers", 
 					"banner" : "https://i.imgur.com/gLwoSRW.png", 
-					"url" : "https://www.youtube.com/watch?v=EeCHOdUHZEk"}];
+					"url" : "likewallet.html"}];
 
 //Insert projects info here
 const projects = [{ "title": "Berkeley Hyperloop", 
 					"description" : "Led team of 60+ undergraduate engineers to build a functional Hyperloop pod and compete in the SpaceX Hyperloop Competition against the world’s top 27 pods", 
 					"banner" : "https://i.imgur.com/k3MTcR5.jpg",
-					"url" : "http://www.berkeley-hyperloop.com/" },
+					"url" : "bloop.html" },
 					{ "title": "Drinks4Snaps", 
 					"description" : "Implemented a rewards system for promoting local restaurants through personal Snapchat accounts, increasing weekend revenue by $1,000", 
 					"banner" : "https://media.giphy.com/media/xUOwGdy9OQOQYimnfi/giphy.gif",
-					"url" : "https://www.youtube.com/watch?v=Zi9SzMXhmpA" },
+					"url" : "drinks4snaps.html" },
 					{ "title": "Tensegrity Robot For NASA", 
 					"description" : "Designed, prototyped, controlled and tested the world's first actuated 12-bar Tensegrity robot for planetary exploration", 
 					"banner" : "https://media.giphy.com/media/3ohs4yLSGMYG06pKG4/giphy.gif",
-					"url" : "https://www.youtube.com/watch?v=qgCaIwVMu44" },
-					{ "title": "Nourish Technology", 
-					"description" : "Designed and prototyped solutions to automatically package food using intelligent robotic systems", 
-					"banner" : "https://i.imgur.com/QHc6two.jpg",
-					"url" : "https://www.youtube.com/watch?v=ttMuK_rMTpk"}];
+					"url" : "tensegrity.html" },
+					{ "title": "Lean Launchpad", 
+					"description" : "Led two experiments and 135 interviews to test 100+ hypotheses and validate three business ideas", 
+					"banner" : "https://i.imgur.com/LZ2taSo.png",
+					"url" : "llp.html"}];
 
 //PORTFOLIO INFO END
 
@@ -41,20 +41,34 @@ const projects = [{ "title": "Berkeley Hyperloop",
 class Card extends React.Component {
   render() {
   	return (
-
   		<div className="card animated bounceIn">
 		    <div className="pageImg d-flex align-items-center">
-		      <a href={this.props.url} target="_blank"><img src={this.props.banner}></img></a>
+		      <a href="#" data-toggle="modal" data-target="#modalContainer"><img src={this.props.banner}></img></a>
 		    </div>
 		    <div className="pageInfo">
-		      <a href={this.props.url} className="pageTitle" target="_blank"><h1>{this.props.title}</h1></a>
+		      <a href="#" className="pageTitle" data-toggle="modal" data-target="#modalContainer"><h1>{this.props.title}</h1></a>
 		      <p className="pageDescription">{this.props.description}</p>
 		    </div>
 		</div>
-
   	);
   }
 }
+
+class ModalTitle extends React.Component {
+	render(){
+		return (<div>{this.props.title}</div>);
+	}
+}
+
+// class ModalPics extends React.Component {
+// 	render(){
+// 		return (
+// 			<div className="modal-body">
+
+// 			</div>
+// 		);
+// 	}
+// }
 
 //Class for groups of cards
 class Cards extends React.Component {
@@ -169,7 +183,7 @@ $(document).on("click", "#btnProducts", function(){
 	setTimeout(function(){ $("#chat-"+idProd3).slideToggle(); }, 3000);
 	setTimeout(function(){ $("#pic-chat-"+idProd3).slideToggle(); }, 3000);
 	setTimeout(function(){ $('.replyButtons button').prop('disabled', false); $(".replyButtons").removeClass("fadeOut"); $(".replyButtons").addClass("fadeIn"); }, 3000);
-	setTimeout(function(){ updateScroll(); }, 3400);
+	setTimeout(function(){ updateScroll(); $(".card").removeClass("animated"); }, 3400);
 
 });
 
@@ -220,7 +234,7 @@ $(document).on("click", "#btnProjects", function(){
 	setTimeout(function(){ $("#chat-"+idProj3).slideToggle(); }, 3000);
 	setTimeout(function(){ $("#pic-chat-"+idProj3).slideToggle(); }, 3000);
 	setTimeout(function(){ $('.replyButtons button').prop('disabled', false); $(".replyButtons").removeClass("fadeOut"); $(".replyButtons").addClass("fadeIn"); }, 3000);
-	setTimeout(function(){ updateScroll(); }, 3400);
+	setTimeout(function(){ updateScroll(); $(".card").removeClass("animated"); }, 3400);
 
 });
 
@@ -271,8 +285,21 @@ $(document).on("click", "#btnAboutMe", function(){
 	setTimeout(function(){ $("#"+id3).slideToggle(); }, 3000);
 	setTimeout(function(){ $("#"+id4).slideToggle(); }, 4000);
 	setTimeout(function(){ $('.replyButtons button').prop('disabled', false); $(".replyButtons").removeClass("fadeOut"); $(".replyButtons").addClass("fadeIn"); }, 4000);
-	setTimeout(function(){ updateScroll(); }, 4400);
+	setTimeout(function(){ updateScroll(); $(".card").removeClass("animated"); }, 4400);
 
+});
+
+//Load modal file when user clicks on project
+$(document).on("click", ".card a", function(){
+	var modalTitle = $(this).parent().parent().find(".pageTitle").text();
+	if ($(this).parent().parent().parent().attr("id") == "cards-products") {
+		var project = arraySearch(modalTitle, products);
+	} else {
+		var project = arraySearch(modalTitle, projects);
+	}
+	$("#modalContainer .modal-content").load(project.url);
+	Waves.attach(".btn, .carousel-control-next, .carousel-control-prev");
+	Waves.init();
 });
 
 //REACT RENDERING + ANIMATIONS END
@@ -320,4 +347,13 @@ function updateScroll() {
 		$(".container").removeClass("fixed-bottom");
 	}
 	$(document).scrollTop($(".container")[0].scrollHeight);
+}
+
+//Search array for object key value
+function arraySearch(valueKey, myArray){
+    for (var i=0; i < myArray.length; i++) {
+        if (myArray[i].title === valueKey) {
+            return myArray[i];
+        }
+    }
 }

@@ -292,7 +292,6 @@ $(document).on("click", "#btnAboutMe", function(){
 //Load modal file when user clicks on project
 $(document).on("click", ".card a", function(){
 	$("#modalContainer .modal-content").empty();
-	$("#modalContainer .modal-content").html('<div class="modalSpinner"><i class="fas fa-spinner fa-spin"></i></div>');
 	var modalTitle = $(this).parent().parent().find(".pageTitle").text();
 	if ($(this).parent().parent().parent().attr("id") == "cards-products") {
 		var project = arraySearch(modalTitle, products);

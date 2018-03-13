@@ -228,12 +228,6 @@ strong {
 	font-size: 0.9em;
 }
 
-.modalSpinner {
-	width: 100%;
-	text-align: center;
-	padding: 50px;
-}
-
 .pageImg {
 		position:relative;
 		overflow:hidden;

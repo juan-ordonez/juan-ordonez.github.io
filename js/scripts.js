@@ -28,8 +28,8 @@ const projects = [{ "title": "Berkeley Hyperloop",
 					"banner" : "https://media.giphy.com/media/3ohs4yLSGMYG06pKG4/giphy.gif",
 					"url" : "tensegrity.html" },
 					{ "title": "Lean Launchpad", 
-					"description" : "Led two experiments and 135 interviews to test 100+ hypotheses and validate three business ideas", 
-					"banner" : "https://i.imgur.com/LZ2taSo.png",
+					"description" : "Led two experiments and 145 interviews to test 100+ hypotheses and validate three business ideas", 
+					"banner" : "https://i.imgur.com/F01TwC5.png",
 					"url" : "llp.html"}];
 
 //PORTFOLIO INFO END

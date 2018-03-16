@@ -11,7 +11,7 @@ const products = [{ "title": "Yipp: The Social Bookmarking App",
 					"url" : "yipp.html" },
 					{ "title": "LikeWallet", 
 					"description" : "LikeWallet provides ROI analytics for social media Influencers", 
-					"banner" : "https://i.imgur.com/gLwoSRW.png", 
+					"banner" : "https://i.imgur.com/a7Plstl.jpg", 
 					"url" : "likewallet.html"}];
 
 //Insert projects info here

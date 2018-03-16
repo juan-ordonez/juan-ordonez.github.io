@@ -20,17 +20,17 @@ const projects = [{ "title": "Berkeley Hyperloop",
 					"banner" : "https://i.imgur.com/k3MTcR5.jpg",
 					"url" : "bloop.html" },
 					{ "title": "Drinks4Snaps", 
-					"description" : "Implemented a rewards system for promoting local restaurants through personal Snapchat accounts, increasing weekend revenue by $1,000", 
-					"banner" : "https://media.giphy.com/media/xUOwGdy9OQOQYimnfi/giphy.gif",
+					"description" : "Designed and executed experiment to have over 100 students promote two local restaurants over Snapchat, increasing the businesses’ weekend revenue by $1,000", 
+					"banner" : "https://media.giphy.com/media/51UeSzUETBQQmQpJ4u/giphy.gif",
 					"url" : "drinks4snaps.html" },
-					{ "title": "Tensegrity Robot For NASA", 
-					"description" : "Designed, prototyped, controlled and tested the world's first actuated 12-bar Tensegrity robot for planetary exploration", 
-					"banner" : "https://media.giphy.com/media/3ohs4yLSGMYG06pKG4/giphy.gif",
-					"url" : "tensegrity.html" },
 					{ "title": "Lean Launchpad", 
 					"description" : "Led two experiments and 145 interviews to test 100+ hypotheses and validate three business ideas", 
 					"banner" : "https://i.imgur.com/F01TwC5.png",
-					"url" : "llp.html"}];
+					"url" : "llp.html"},
+					{ "title": "Tensegrity Robot For NASA", 
+					"description" : "Designed, prototyped, controlled and tested the world's first actuated 12-bar Tensegrity robot for planetary exploration", 
+					"banner" : "https://media.giphy.com/media/3ohs4yLSGMYG06pKG4/giphy.gif",
+					"url" : "tensegrity.html" }];
 
 //PORTFOLIO INFO END
 

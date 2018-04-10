@@ -409,6 +409,10 @@ strong {
 	box-shadow: 0 4px 12px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.12);
 }
 
+.modal.fade .modal-dialog{
+	transform:none !important;
+}
+
 @media only screen and (min-width: 768px) {
 	.mb-responsive {margin-bottom: 0px;}
 	.modal-body .container {padding: 48px;}

@@ -19,14 +19,6 @@ const projects = [{ "title": "Berkeley Hyperloop",
 					"description" : "Led team of 60+ undergraduate engineers to build a functional Hyperloop pod and compete in the SpaceX Hyperloop Competition against the world’s top 27 pods", 
 					"banner" : "https://i.imgur.com/k3MTcR5.jpg",
 					"url" : "bloop.html" },
-					{ "title": "Drinks4Snaps", 
-					"description" : "Designed and executed experiment to have over 100 students promote two local restaurants over Snapchat, increasing the businesses’ weekend revenue by $1,000", 
-					"banner" : "https://media.giphy.com/media/51UeSzUETBQQmQpJ4u/giphy.gif",
-					"url" : "drinks4snaps.html" },
-					{ "title": "Lean Launchpad", 
-					"description" : "Led two experiments and 145 interviews to test 100+ hypotheses and validate three business ideas", 
-					"banner" : "https://i.imgur.com/F01TwC5.png",
-					"url" : "llp.html"},
 					{ "title": "Tensegrity Robot For NASA", 
 					"description" : "Designed, prototyped, controlled and tested the world's first actuated 12-bar Tensegrity robot for planetary exploration", 
 					"banner" : "https://media.giphy.com/media/3ohs4yLSGMYG06pKG4/giphy.gif",
@@ -133,7 +125,7 @@ class MessageUser extends React.Component {
 const totalMessages = 14; //Number of total messages goes here
 var messagesRemaining = 9; //Number of messages remaining after intro
 
-const outroMessage = "Thanks for hanging out! If you wanna chat some more, feel free to shoot me an email at jdordonez@berkeley.edu 🙃";
+const outroMessage = "Thanks for hanging out! Don't forget to check out my social media profiles at the bottom of the page 🙃";
 const outroID = "outro";
 
 $(document).on("click", "#btnProducts", function(){
@@ -143,7 +135,7 @@ $(document).on("click", "#btnProducts", function(){
 	
 	//Render user reply
 	var idProd1 = (totalMessages - messagesRemaining).toString();
-	ReactDOM.render(<MessageUser message="Show me the products you've built!" id={"chat-"+idProd1}/>, document.getElementById('userReplies'));
+	ReactDOM.render(<MessageUser message="Show me the products you've designed!" id={"chat-"+idProd1}/>, document.getElementById('userReplies'));
 	messagesRemaining -= 1;
 	$(".replyButtons").before($("#userReplies").html());
 
@@ -194,7 +186,7 @@ $(document).on("click", "#btnProjects", function(){
 	
 	//Render user reply
 	var idProj1 = (totalMessages - messagesRemaining).toString();
-	ReactDOM.render(<MessageUser message="Tell me about your projects" id={"chat-"+idProj1} />, document.getElementById('userReplies'));
+	ReactDOM.render(<MessageUser message="Tell me about your engineering projects" id={"chat-"+idProj1} />, document.getElementById('userReplies'));
 	messagesRemaining -= 1;
 	$(".replyButtons").before($("#userReplies").html());
 
@@ -251,9 +243,9 @@ $(document).on("click", "#btnAboutMe", function(){
 	//Set messages for 'about me' reply
 	var aboutMe1 = "Does this mean we're friends? 😁";
 	var id1 = "chat-"+(totalMessages - messagesRemaining).toString();
-	var aboutMe2 = "I'm from Colombia and I have lived in six countries so far! Right now I am based in the Bay Area and I'm loving it";
+	var aboutMe2 = "I'm 25 years old and I recently graduated from UC Berkeley's grad school, where I studied Product Design and Mechanical Engineering";
 	var id2 = "chat-"+(totalMessages - messagesRemaining + 1).toString();
-	var aboutMe3 = "Btw, I'm currently looking for a position in a Product team. If you've got any leads, please hit me up at jdordonez@berkeley.edu! 👍";
+	var aboutMe3 = "I love technology and I'm currently looking to join a product team! If you've got any leads, please hit me up at jdordonez@berkeley.edu 👍";
 	var id3 = "chat-"+(totalMessages - messagesRemaining + 2).toString();
 	var botFollowUp = "Anyways, wanna see my work?";
 	var botGoodbye = "Thanks for hanging out! 👋"
